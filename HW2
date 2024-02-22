@@ -1,0 +1,78 @@
+#HW2
+
+
+#Phase 1
+
+CCnumbers = []
+CCNumbersCheck = []
+
+i = 0
+while i < 3:
+    #capture input
+    input1 = input("Please enter a CC number:\n")
+    #check if duplicate
+    if input1 in CCNumbersCheck:
+        print("Please enter a unique number")
+        continue
+    #else append to CC lists
+    else:
+        CCNumbersCheck.append(input1)
+        CCnumbers.append(input1)
+        i += 1
+  
+
+#Phase 2
+
+y = 0
+intList = [0,0,0]
+firstDigits = [4,5,6]
+
+
+#validate each CC input
+for y in range (3):
+    
+    thisIteration = CCnumbers[y]
+    #check conditions
+    if len(thisIteration) == 16 and int(thisIteration[0]) in firstDigits:
+
+        #try to cast to int
+        try:
+            intList[y] = int(CCnumbers[y])
+        except ValueError:
+            print ("please enter a number with no other characters" )
+            break
+        y+=1 
+
+    else:
+        print ("invalid number")
+
+
+
+print (intList)
+finalList = ["","",""]
+
+for i in range (3):
+    finalList[i] = str(intList[i])
+
+
+
+i = 0
+for i in range (len(finalList)):
+    thisIteration2 = finalList[i] #thisIteration2 is a whole CC #
+    x = 0
+    count = i + 1
+    print (f"Card Number {count}:\n")
+    for x in range (16):
+        thisIteration1 = thisIteration2[x] #thisIteration1 is a single digit of a CC#
+        if x > 0 and (x+1) % 4 == 0 and x != 15:
+            print (f"{thisIteration1}-", end = "")
+        else:
+            print(f"{thisIteration1}", end = "")
+        
+    print ("\n")
+
+
+
+
+
+
